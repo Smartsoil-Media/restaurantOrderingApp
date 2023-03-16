@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+html, body {
+    margin: 0px;
+    box-sizing: border-box;
+    padding: 0px;
+    font-family: 'Smythe', cursive;
+}
+
+h1 {
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-style: bold;
+    margin-top: 20px;
+}
+
+.italic {
+    color: rgb(169, 169, 169);
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+/* NAV */
+
+
+.main-nav {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./images/burger.jpg);
+    background-size: cover;
+    margin: 0px;
+    padding: 50px 10%;
+    color: white;
+}
+
+
+/* MENU ITEMS */
+.menu-container {
+    width: 90%;
+    max-width: 750px;
+     margin: auto;
+}
+
+.single-item-container {
+    margin-bottom: 20px;
+}
+
+.emoji {
+    font-size: 50px;
+}
+ 
+.item-name {
+    padding-bottom: 8px;
+}
+
+.item-desc {
+    width: 300px;
+}
+
+.item-ingred {
+    padding-bottom: 5px;
+}
+
+.item-price {
+    font-size: 18px;
+}
+
+
+
+
+
+/* BUTTONS */
+
+.add-btn {
+    border: solid black 1px;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    padding: 25px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s;
+    background-color: white;
+}
+
+.add-btn:hover {
+    cursor: pointer;
+    scale: 110%;
+    transform: rotate(90deg);
+    color: rgb(213, 164, 58); 
+    box-shadow: inset 0px 0px 5px;
+}
+
+.add-btn:active {
+    background-color: rgb(213, 164, 58); 
+    ;
+}
+
+.page-break {
+    background-color: rgb(182, 181, 181);
+    width: 100%;
+    height: 1px;
+}
+
+
+
