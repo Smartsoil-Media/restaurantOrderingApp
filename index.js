@@ -27,10 +27,19 @@ function handleGetItem(data) {
 function handleRemoveItem(target) {
   if (target.classList.contains('remove-btn')) {
     const orderItem = target.closest('.indi-order-item');
-    myOrder.pop(orderItem);
+    const orderNumber = orderItem.dataset.orderNumber;
+    console.log(`Removing item at index ${orderNumber}`);
+    myOrder.splice(orderNumber, 1);
     render();
   }
 }
+
+// function handleRemoveItem(target) {
+//   console.log(target)
+//   // if (target.parentElement.parentElement.id === 'indi-order-item')
+//   // target.parentElement.parentElement.remove()
+// }
+
 
 function getFeedHtml() {
   let feedHtml = ''
@@ -55,24 +64,27 @@ function getFeedHtml() {
 }
 
 function getOrderHtml() {
+  let numOfItems = 0
   let totalOrderAmount = getTotalOrderAmount();
   document.getElementById('total-amount').innerHTML = "$" + totalOrderAmount
   let orderHtml = ''
   myOrder.forEach(function(item){
     orderHtml += 
       `
-      <div class="indi-order-item"">
+      <div class="indi-order-item" data-order-number="${numOfItems}" id="indi-order-item">
         <div class="order-name-and-price  flex">
           <h2 class="ordered-item-title"> ${item.name} </h2>
-          <button class="remove-btn italic"> remove </button>
+          <button class="remove-btn italic" data-order-number="${numOfItems}"> remove </button>
         </div>
         <div class="ordered-price-container">
           <h2 class="ordered-item-price"> $${item.price} </h2>
         </div>
       </div>
       `
+      numOfItems++
+
   });
-  
+
   let orderContainer = document.getElementById('order-container')
   orderContainer.innerHTML = orderHtml
 
@@ -87,5 +99,14 @@ function render() {
 
   let orderHtml = getOrderHtml()
 }
+
+// function handleRemoveItem(target) {
+//   if (target.classList.contains('remove-btn')) {
+//     const orderItem = target.closest('.indi-order-item');
+//     console.log(orderItem)
+//     myOrder.pop(orderItem);
+//     render();
+//   }
+// }
 
 render()
