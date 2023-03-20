@@ -1,6 +1,7 @@
 import {menuArray} from "./data.js"
 let myOrder = []
 const orderBtn = document.getElementById('order-btn')
+const orderSummary = document.getElementById('order-summary')
     
 document.addEventListener('click', function(e) {
   handleGetItem(e.target.dataset);
@@ -12,6 +13,12 @@ document.querySelector('form').addEventListener('submit', function(event) {
   document.getElementById('pop-up').classList.toggle('hidden')
   document.getElementById('dynamic').classList.toggle('hidden')
   document.getElementById('thankyou-msg').classList.toggle('hidden')
+  let msgEl = document.getElementById('thank-you-text')
+  let formEl = document.querySelector('form')
+  msgEl.innerHTML = `Thak you so much,  ${formEl.name.value}! `
+  orderSummary.innerHTML = getSummaryHtml()
+  let totalCost = getTotalOrderAmount()
+  document.getElementById('final-amount').innerHTML = "$" + totalCost
 });
 
 
@@ -20,8 +27,9 @@ orderBtn.addEventListener('click', function() {
 })
 
 function handleOpenPopUp() {
+  if (myOrder.length > 0) {
 document.getElementById('pop-up').classList.toggle('hidden')
-  
+  }
 } 
 
 function getTotalOrderAmount() {
@@ -52,11 +60,18 @@ function handleRemoveItem(target) {
   }
 }
 
+
 // function handleRemoveItem(target) {
-//   console.log(target)
-//   // if (target.parentElement.parentElement.id === 'indi-order-item')
-//   // target.parentElement.parentElement.remove()
+//   myOrder.forEach(function(item, index) {
+//     if (item.id === parseInt(target.dataset.orderNumber)) {
+//       console.log(`Removing item at index ${index}`);
+//       myOrder.splice(index, 1);
+//       render();
+//     }
+//   });
 // }
+
+
 
 
 function getFeedHtml() {
@@ -100,6 +115,32 @@ function getOrderHtml() {
       </div>
       `
       numOfItems++
+
+  });
+
+  let orderContainer = document.getElementById('order-container')
+  orderContainer.innerHTML = orderHtml
+
+
+  return orderHtml
+}
+
+function getSummaryHtml() {
+  let totalOrderAmount = getTotalOrderAmount();
+  document.getElementById('total-amount').innerHTML = "$" + totalOrderAmount
+  let orderHtml = ''
+  myOrder.forEach(function(item){
+    orderHtml += 
+      `
+      <div class="summary-order-item" data-order-number="${item.id}" id="indi-order-item">
+        <div class="order-name-and-price  flex">
+          <h2 class="ordered-item-title"> ${item.name} </h2>
+        </div>
+        <div class="ordered-price-container">
+          <h2 class="ordered-item-price"> $${item.price} </h2>
+        </div>
+      </div>
+      `
 
   });
 
