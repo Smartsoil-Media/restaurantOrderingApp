@@ -23,7 +23,54 @@
     <div class="menu-container" id="menu-contianer">
       <div class="menu"></div>
     </div>
-    <section>
+    <section class="pop-up hidden" id="pop-up">
+      <form>
+        <div class="pop-up-container">
+          <h2 class="card-title-heading">Enter Your Card Details</h2>
+          <input
+            class="value-input"
+            type="text"
+            name="name"
+            id="name-input"
+            placeholder="Your Full Name"
+            required
+          />
+          <input
+            class="value-input"
+            type="number"
+            name="card"
+            id="card-num-input"
+            placeholder="Your Card Number"
+            required
+          />
+          <div class="date-ccv">
+            <input
+              class="value-input"
+              placeholder="month/year"
+              type="month"
+              name="expiry-date"
+              id="expiry-date-input"
+              required
+            />
+            <input
+              class="value-input"
+              type="text"
+              name="ccv"
+              id="ccv-input"
+              placeholder="CCV"
+              required
+            />
+          </div>
+          <button class="order-btn">Submit</button>
+        </div>
+      </form>
+    </section>
+    <div class="thankyou-msg hidden" id="thankyou-msg">
+      <h1>Thanks so much for shopping local with us!</h1>
+      <h3>You order is on it's way!</h3>
+      <div class="order-details" id="completed-order-details"></div>
+    </div>
+    <section id="dynamic">
       <div class="full-order-container">
         <div class="your-order-heading">
           <h2 class="">Your Order</h2>
@@ -34,7 +81,7 @@
           <h2>Total Price</h2>
           <h2 id="total-amount">Total: $</h2>
         </div>
-        <button class="order-btn" id="oder-btn">Complete Order</button>
+        <button class="order-btn" id="order-btn">Complete Order</button>
       </div>
     </section>
     <script src="./index.js" type="module"></script>

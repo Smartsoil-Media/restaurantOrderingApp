@@ -1,10 +1,28 @@
 import {menuArray} from "./data.js"
 let myOrder = []
+const orderBtn = document.getElementById('order-btn')
     
 document.addEventListener('click', function(e) {
   handleGetItem(e.target.dataset);
   handleRemoveItem(e.target);
 })
+
+document.querySelector('form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  document.getElementById('pop-up').classList.toggle('hidden')
+  document.getElementById('dynamic').classList.toggle('hidden')
+  document.getElementById('thankyou-msg').classList.toggle('hidden')
+});
+
+
+orderBtn.addEventListener('click', function() {
+  handleOpenPopUp() 
+})
+
+function handleOpenPopUp() {
+document.getElementById('pop-up').classList.toggle('hidden')
+  
+} 
 
 function getTotalOrderAmount() {
   let totalAmount = 0
@@ -100,13 +118,5 @@ function render() {
   let orderHtml = getOrderHtml()
 }
 
-// function handleRemoveItem(target) {
-//   if (target.classList.contains('remove-btn')) {
-//     const orderItem = target.closest('.indi-order-item');
-//     console.log(orderItem)
-//     myOrder.pop(orderItem);
-//     render();
-//   }
-// }
 
 render()
